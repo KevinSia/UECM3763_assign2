@@ -4,12 +4,12 @@ import numpy as np
 #Defining parameters
 
 alpha = 1  
-theta = 0.064 #0.064
-sigma = 0.27  
-R0 = 3
+theta = 0.064 
+sigma = 0.25 
+R0 = 0.5
 period = 1
 n_path = 1000   #number of simulations
-n = 1000        #number of partitions on time 1
+n = 1000     #number of partitions on time 1
 
 #Generating Brownian motions
 
@@ -37,7 +37,8 @@ Rt = theta * (1 - C2) + R0 * C2 + sigma * C1 * ito
     #Rt has 1000 runs , each run has 1001 points
 
 #plotting 5 realizations of the mean reversal process
-Rt_sample = Rt[0:5]
+runs = 1
+Rt_sample = Rt[0:runs]
 p.plot(t,Rt_sample.transpose())
 label = 'Time , $t$' ; p.xlabel(label)          
 label = 'Stock prices, $S$' ; p.ylabel(label)

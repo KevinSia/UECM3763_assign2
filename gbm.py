@@ -14,7 +14,7 @@ period = 3;
 #Generating Brownian Motion
 
 t = p.linspace(0,period,n+1)
-dB = p.randn(n_path,n+1) / p.sqrt(n) ; dB[:,0] = 0 #1st column of dB = 0
+dB = p.randn(n_path,n+1) / p.sqrt(n/period) ; dB[:,0] = 0 #1st column of dB = 0
 B = dB.cumsum(axis = 1) #cumulative sum over columns for each row
 
 #Calculate stock prices
