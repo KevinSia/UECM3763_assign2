@@ -1,6 +1,7 @@
 import pylab as p
 import numpy as np
 
+# dSt = mu * S0 * dt + sigma * S0 * dBt
 
 #Defining parameters
 
@@ -9,7 +10,7 @@ sigma = 0.26;
 S0 = 39;
 n_path = 1000; #number of simulations
 n = 1000 ;     #number of partitiions on time 3
-time = 3;
+time = 3.0;
 
 #Generating Brownian Motion
 
@@ -27,7 +28,7 @@ S[:,1:] = S0 * p.exp(nu * t[1:] + sigma * B[:,1:])
 #Plotting 5 realizations of stock price GBM
 
 run = 5
-S_sample = S[0:run]
+S_sample = S[0:run]             #5 runs of S is extracted
 p.plot(t,S_sample.transpose());
 
 #Plot labelling
@@ -39,6 +40,7 @@ p.show();
 
 #Calculations
 
+print('From data')
 S3 = p.array(S[:,-1])
 E_S3 = np.mean(S3)
 Var_S3 = np.var(S3)
@@ -51,7 +53,7 @@ E_S3_39 = sum(S3_39) / sum(mask)
 print('P(S3 > 39) = ' + str(P_S3) , '\nE(S3 | S3 > 39) = ' + str(E_S3_39))
 
 
-print('\nTheoritical expectation and variance:')
+print('\nTheoretical expectation and variance:')
 E = S0 * p.exp(mu*time)
 Var = (S0**2)*(np.exp(2*mu*time))*(np.exp(sigma*sigma*time)-1)
 print('E('+ str(time) + ') = ' + str(E) , '\nVar('+str(time) + ') = ' + str(Var))
