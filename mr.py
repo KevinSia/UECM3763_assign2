@@ -16,10 +16,10 @@ n = 1000     #number of partitions on time 1
 #Generating Brownian motions
 
 dt = time / n
-t = p.linspace(0,time,n+1)   ##[:-1] 
+t = p.linspace(0,time,n+1)[:-1] 
     #generation step size = 1/1000
-dB = p.randn(n_path,n+1) * p.sqrt(dt) ; dB[:,0] = 0
-B = dB.cumsum(axis=1)
+dB = p.randn(n_path,n+1) * p.sqrt(dt) ; dB[:,0] = 0 #first column of dB is 0
+B = dB.cumsum(axis=1) #cumulative sum over columns for each row
 
 
 # Generating R with Euler-Maruyama method
@@ -33,7 +33,7 @@ for col in range(n):
 
 #Plotting 5 realization of R
 run = 5
-R_sampled = R[0:run]     # 5 runs of R is extracted
+R_sampled = R[0:run,:-1]     # 5 runs of R is extracted
 p.plot(t,R_sampled.transpose())
 
 #Plot labelling

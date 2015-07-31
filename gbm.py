@@ -56,7 +56,7 @@ print('P(S3 > 39) = ' + str(P_S3) , '\nE(S3 | S3 > 39) = ' + str(E_S3_39))
 print('\nTheoretical expectation and variance:')
 E = S0 * p.exp(mu*time)
 Var = (S0**2)*(np.exp(2*mu*time))*(np.exp(sigma*sigma*time)-1)
-print('E('+ str(time) + ') = ' + str(E) , '\nVar('+str(time) + ') = ' + str(Var))
+print('E(S3) = ' + str(E) , '\nVar(S3) = ' + str(Var))
 
 
 
